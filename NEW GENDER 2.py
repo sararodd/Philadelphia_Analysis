@@ -9,31 +9,29 @@ print(os.getcwd())
 os.listdir(os.getcwd())
 print(os.listdir(os.getcwd()))
 
+#create loop for all files in subfolder 'control data' from 'philadelphia_test 2' folder
 for filename in os.listdir(os.getcwd()):
-    #load csv file using relative path
+    #load excel files 
     if 'philly_gender_M089887.xlsx' in filename:
-        print("made it here")
-        dataA = pd.read_excel(filename, skiprows=3)
-        mean1 = dataA['correct'].mean()
-        std1 = dataA['correct'].std()
+        
+        data = pd.read_excel(filename, skiprows = 3)
+       
+    #calculating the mean and standard deviation
+        mean1 = data['correct'].mean()
+        std1 = data['correct'].std()
 
         print('Mean of correct answers: ' + str(mean1))
         print('Std of correct answers: ' + str(std1))
 
+    #exclude random files when loading csv files
     elif not filename == '.DS_Store':
 
         print(filename)
-        dataA = pd.read_csv(filename, skiprows = 3)
+        data = pd.read_csv(filename, skiprows = 3)
 
-
-    #names the columns
-    #column_names = ['rowNo', 'type', 'trialNo', 'stim1', 'key', 'ITI', 'presTime', 'stimFormat', 'trialText', 'keyboard',
-     #           'random', 'ITI_real', 'presTime_real', 'timestamp', 'response', 'RT', 'correct']
-    #names = column_names
-
-    #calculating the mean, standard deviation, etc...
-        mean1 = dataA['correct'].mean()
-        std1 = dataA['correct'].std()
+    #calculating the mean and standard deviation
+        mean1 = data['correct'].mean()
+        std1 = data['correct'].std()
 
         print('Mean of correct answers: ' + str(mean1))
         print('Std of correct answers: ' + str(std1))
